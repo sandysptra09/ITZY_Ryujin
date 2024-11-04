@@ -6,6 +6,8 @@ import { styles as globalStyles } from '../../styles';
 import images from '../../assets/images/images';
 
 export default function Gallery() {
+
+    // initialize
     const gallery = useRef(null);
     const [dimension, setDimension] = useState({ width: 0, height: 0 });
 
@@ -44,7 +46,7 @@ export default function Gallery() {
     return (
         <div className='mb-4'>
             <motion.div
-                className={`${globalStyles.sectionHeadText} text-center mb-8` } 
+                className={`${globalStyles.sectionHeadText} text-center mb-8`}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -57,7 +59,6 @@ export default function Gallery() {
                 <Column images={[images[6], images[7], images[8]]} y={y3} />
                 <Column images={[images[9], images[10], images[11]]} y={y4} />
             </div>
-            <div className={styles.spacer}></div>
         </div>
     );
 }
