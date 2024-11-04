@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import Lenis from '@studio-freight/lenis';
 import { motion, useTransform, useScroll } from 'framer-motion';
 import styles from './Gallery.module.scss'
+import { styles as globalStyles } from '../../styles';
 import images from '../../assets/images/images';
 
 export default function Gallery() {
@@ -41,7 +42,15 @@ export default function Gallery() {
     }, []);
 
     return (
-        <div>
+        <div className='mb-4'>
+            <motion.div
+                className={`${globalStyles.sectionHeadText} text-center mb-8` } 
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+            >
+                <h2 className={globalStyles.sectionHeadText}>Ryujin Gallery's</h2>
+            </motion.div>
             <div ref={gallery} className={styles.gallery}>
                 <Column images={[images[0], images[1], images[2]]} y={y} />
                 <Column images={[images[3], images[4], images[5]]} y={y2} />
