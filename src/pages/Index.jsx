@@ -16,6 +16,7 @@ export default function Index() {
             <Overview />
             <Gallery />
             <Discography />
+            <div className={styles.spacer}></div>
         </div>
     )
 }

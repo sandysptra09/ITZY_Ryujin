@@ -82,9 +82,10 @@ function Discography() {
                     {...textAnimation(0)}
                     style={{ fontSize: '17px', fontWeight: 'normal', margin: '10px 0' }}
                 >
-                    Sebagai anggota grup ITZY, Ryujin telah berkontribusi pada berbagai lagu yang mengangkat semangat dan energi, menunjukkan bakatnya yang tak terbantahkan di dunia K-Pop.
-                    Setiap lagu yang dibawakannya menunjukkan karakter yang kuat dan keunikan yang memukau, menjadikan setiap penampilan spesial bagi para penggemar.
-                    Berikut adalah beberapa karya dan kontribusinya yang menonjol dalam perjalanan musiknya bersama ITZY:
+                    As a member of the group ITZY, Ryujin has contributed to a variety of uplifting and energizing songs,
+                    showcasing her undeniable talent in the K-Pop world. Each song she performs showcases her strong character
+                    and mesmerizing uniqueness, making each performance special for fans. Here are some of Ryujin's outstanding
+                    works and contributions in his musical journey with ITZY:
                 </motion.p>
             </div>
 
@@ -133,9 +134,9 @@ function Discography() {
                                     <div className="flex items-center mt-4">
                                         <div onClick={() => handlePlayPause(index)} className="cursor-pointer">
                                             {audioStates[index].isPlaying ? (
-                                                <FaPause className="text-black" size={24} />
+                                                <FaPause className="text-black" size={18} />
                                             ) : (
-                                                <FaPlay className="text-black" size={24} />
+                                                <FaPlay className="text-black" size={18} />
                                             )}
                                         </div>
                                         <input
