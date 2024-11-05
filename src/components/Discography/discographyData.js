@@ -1,3 +1,4 @@
+// import image ryujin album
 import {
     ryujin_ice, ryujin_cake,
     ryujin_wannabe,
@@ -12,6 +13,10 @@ import {
     ryujin_gold
 } from "../../assets/images/images";
 
+// import music ryujin album
+import { ryujin_music1, ryujin_music10, ryujin_music11, ryujin_music2, ryujin_music3, ryujin_music4, ryujin_music5, ryujin_music6, ryujin_music7, ryujin_music8, ryujin_music9 } from "../../assets/music/music";
+
+
 const discographyData = [
     {
         title: "IT'z Different",
@@ -19,6 +24,7 @@ const discographyData = [
         description: "ITZY's debut single that introduced them to the world with the song 'DALLA DALLA'.",
         song: "Dalla Dalla",
         cover: ryujin_itzdifferent,
+        music: ryujin_music1
     },
     {
         title: "IT'z ICY",
@@ -26,6 +32,7 @@ const discographyData = [
         description: "ITZY's first mini album with the title track 'ICY'.",
         song: "Icy",
         cover: ryujin_ice,
+        music: ryujin_music2
     },
     {
         title: "IT'z ME",
@@ -33,6 +40,7 @@ const discographyData = [
         description: "ITZY's second mini album with the title track 'WANNABE'.",
         song: "Wannabe",
         cover: ryujin_wannabe,
+        music: ryujin_music3
     },
     {
         title: "Not Shy",
@@ -40,6 +48,7 @@ const discographyData = [
         description: "ITZY's third mini album with the title track 'Not Shy'.",
         song: "Not Shy",
         cover: ryujin_notshy,
+        music: ryujin_music4
     },
     {
         title: "GUESS WHO",
@@ -47,6 +56,7 @@ const discographyData = [
         description: "ITZY's fourth mini album with the title track 'Mafia In The Morning'.",
         song: "Mafia In The Morning",
         cover: ryujin_guesswho,
+        music: ryujin_music5
     },
     {
         title: "CRAZY IN LOVE",
@@ -54,6 +64,7 @@ const discographyData = [
         description: "ITZY's first full-length album with the title track 'Loco'.",
         song: "Loco",
         cover: ryujin_crazyinlove,
+        music: ryujin_music6
     },
     {
         title: "CHECKMATE",
@@ -61,6 +72,7 @@ const discographyData = [
         description: "ITZY's comeback album with the title track 'Sneakers'.",
         song: "Sneakers",
         cover: ryujin_checkmate,
+        music: ryujin_music7
     },
     {
         title: "CHESHIRE",
@@ -68,6 +80,7 @@ const discographyData = [
         description: "ITZY's single album with the title track 'Cheshire'.",
         song: "Cheshire",
         cover: ryujin_chesire,
+        music: ryujin_music8
     },
     {
         title: "KILL MY DOUBT",
@@ -75,6 +88,7 @@ const discographyData = [
         description: "ITZY's comeback mini album with the title track 'Cake'.",
         song: "Cake",
         cover: ryujin_cake,
+        music: ryujin_music9
     },
     {
         title: "BORN TO BE",
@@ -82,6 +96,7 @@ const discographyData = [
         description: "ITZY's new album with the title track 'Untouchable'.",
         song: "Untouchable",
         cover: ryujin_untouchable,
+        music: ryujin_music10
     },
     {
         title: "GOLD",
@@ -89,6 +104,7 @@ const discographyData = [
         description: "ITZY's latest album with the title track 'Gold'.",
         song: "Gold",
         cover: ryujin_gold,
+        music: ryujin_music11
     },
 ];
 

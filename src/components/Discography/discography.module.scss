@@ -3,7 +3,8 @@
     align-items: center;
     overflow: hidden;
     padding: 0 10px;
-    height: 75vh;
+    height: 100vh;
+    margin-top: -130px;
 
     
     @media (max-width: 768px) {
@@ -65,3 +66,21 @@
         height: 200px;
     }
 }
+
+input[type="range"] {
+    width: 100%; 
+    cursor: pointer;
+    appearance: none;
+    background: #ddd;
+    border-radius: 5px;
+
+    &::-webkit-slider-thumb {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        background: black; 
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}
+

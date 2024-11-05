@@ -1,12 +1,70 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import style_discography from "./discography.module.scss";
 import { motion } from "framer-motion";
 import { fadeIn, textAnimation } from "../../utils/motion";
 import { styles } from "../../styles";
 import discographyData from "./discographyData";
+import { FaPlay, FaPause } from "react-icons/fa"; // Mengimpor ikon
 
 function Discography() {
     const constrainRef = useRef(null);
+    const [currentAudio, setCurrentAudio] = useState(null);
+    const [audioStates, setAudioStates] = useState(
+        discographyData.map(() => ({ isPlaying: false, currentTime: 0 }))
+    );
+    const audioRefs = useRef([]);
+
+    const handlePlayPause = (index) => {
+        const audio = audioRefs.current[index];
+
+        if (currentAudio && currentAudio !== audio) {
+            currentAudio.pause();
+            setAudioStates((prev) =>
+                prev.map((state, i) => (i === index ? { ...state, isPlaying: false } : state))
+            );
+            setCurrentAudio(null);
+        }
+
+        if (audio.paused) {
+            audio.play();
+            setCurrentAudio(audio);
+            setAudioStates((prev) =>
+                prev.map((state, i) => (i === index ? { ...state, isPlaying: true } : state))
+            );
+        } else {
+            audio.pause();
+            setAudioStates((prev) =>
+                prev.map((state, i) => (i === index ? { ...state, isPlaying: false } : state))
+            );
+        }
+    };
+
+    const updateTime = (index) => {
+        const audio = audioRefs.current[index];
+        setAudioStates((prev) =>
+            prev.map((state, i) => (i === index ? { ...state, currentTime: audio.currentTime } : state))
+        );
+    };
+
+    const handleProgressChange = (event, index) => {
+        const audio = audioRefs.current[index];
+        const { value } = event.target;
+        audio.currentTime = value;
+
+        setAudioStates((prev) =>
+            prev.map((state, i) => (i === index ? { ...state, currentTime: value } : state))
+        );
+    };
+
+    useEffect(() => {
+        if (currentAudio) {
+            const interval = setInterval(() => {
+                updateTime(discographyData.findIndex(album => album.music === currentAudio.src));
+            }, 1000);
+
+            return () => clearInterval(interval);
+        }
+    }, [currentAudio]);
 
     return (
         <div className="mb-4">
@@ -24,11 +82,9 @@ function Discography() {
                     {...textAnimation(0)}
                     style={{ fontSize: '17px', fontWeight: 'normal', margin: '10px 0' }}
                 >
-                    As a member of the group ITZY, Ryujin has contributed to various uplifting and energizing songs, showcasing her undeniable talent in the K-Pop world.
-                    uplifting and energizing songs, showcasing her undeniable talent in the K-Pop world.
-                    Each song she performs showcases her strong character and mesmerizing uniqueness, making each performance special for fans.
-                    performance special for fans. Here are some of his outstanding works and contributions
-                    Ryujin in her musical journey with ITZY:
+                    Sebagai anggota grup ITZY, Ryujin telah berkontribusi pada berbagai lagu yang mengangkat semangat dan energi, menunjukkan bakatnya yang tak terbantahkan di dunia K-Pop.
+                    Setiap lagu yang dibawakannya menunjukkan karakter yang kuat dan keunikan yang memukau, menjadikan setiap penampilan spesial bagi para penggemar.
+                    Berikut adalah beberapa karya dan kontribusinya yang menonjol dalam perjalanan musiknya bersama ITZY:
                 </motion.p>
             </div>
 
@@ -67,6 +123,30 @@ function Discography() {
                                         {album.song}
                                     </h4>
                                     <p className="mt-2 text-gray-700 text-sm">{album.description}</p>
+
+                                    <audio
+                                        ref={(el) => (audioRefs.current[index] = el)}
+                                        src={album.music}
+                                        preload="auto"
+                                        onTimeUpdate={() => updateTime(index)}
+                                    />
+                                    <div className="flex items-center mt-4">
+                                        <div onClick={() => handlePlayPause(index)} className="cursor-pointer">
+                                            {audioStates[index].isPlaying ? (
+                                                <FaPause className="text-black" size={24} />
+                                            ) : (
+                                                <FaPlay className="text-black" size={24} />
+                                            )}
+                                        </div>
+                                        <input
+                                            type="range"
+                                            min="0"
+                                            max={audioRefs.current[index]?.duration || 0}
+                                            value={audioStates[index].currentTime}
+                                            onChange={(event) => handleProgressChange(event, index)}
+                                            className="mx-4"
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
@@ -78,5 +158,4 @@ function Discography() {
 }
 
 import SectionWrapper from '../../hoc/SectionWrapper';
-
 export default SectionWrapper(Discography, "discography");
