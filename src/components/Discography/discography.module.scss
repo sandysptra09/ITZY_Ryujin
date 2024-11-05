@@ -2,12 +2,10 @@
     display: flex;
     align-items: center;
     overflow: hidden;
-    padding: 0 20px;
+    padding: 0 10px;
+    height: 75vh;
 
-    // Atur tinggi untuk tampilan besar
-    height: 100vh;
-
-    // Pada layar kecil, kurangi tinggi wrapper agar tidak memenuhi seluruh layar
+    
     @media (max-width: 768px) {
         height: auto;
         padding: 20px 10px;
@@ -23,11 +21,11 @@
         cursor: grabbing;
     }
 
-    // Pada layar kecil, hilangkan gap antar elemen dan biarkan satu card tampil penuh
+    
     @media (max-width: 768px) {
         gap: 0;
-        overflow-x: scroll; // Mengaktifkan scroll horizontal pada layar kecil
-        scroll-snap-type: x mandatory; // Scroll snap agar card lebih mudah di-scroll satu per satu
+        overflow-x: scroll; 
+        scroll-snap-type: x mandatory; 
     }
 }
 
@@ -39,12 +37,11 @@
     flex-direction: column;
     transition: transform 0.3s ease;
 
-    // Pada layar kecil, card mengambil lebar penuh container
     @media (max-width: 768px) {
         min-width: 100%;
         max-width: 100%;
         height: 300px;
-        scroll-snap-align: start; // Memungkinkan card berhenti tepat di awal container saat di-scroll
+        scroll-snap-align: start; 
     }
 
     @media (max-width: 480px) {
@@ -59,7 +56,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
-    // Pada layar kecil, sesuaikan tinggi gambar
+    
     @media (max-width: 768px) {
         height: 250px;
     }
