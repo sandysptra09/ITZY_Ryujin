@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { fadeIn, textAnimation } from '../../utils/motion';
 import { styles } from '../../styles';
@@ -8,6 +8,15 @@ import { Tabs, Tab } from '@nextui-org/react';
 import { HiOutlinePaintBrush } from "react-icons/hi2";
 
 function GalleryFilters() {
+
+    // initiate
+    const [activeTab, setActiveTab] = useState("photos"); // Track active tab
+
+    // Function to handle tab change
+    const handleTabChange = (key) => {
+        setActiveTab(key);
+    };
+
     return (
         <div className='mb-4'>
             <motion.div
@@ -19,8 +28,25 @@ function GalleryFilters() {
                 <h2 className={styles.sectionHeadText}>Memorable Moments with ITZY</h2>
             </motion.div>
 
+            <div className='text-white text-[17px] max-w-2xl leading-[30px] mb-8'>
+                <motion.p
+                    {...textAnimation(0)}
+                    style={{ fontSize: '17px', fontWeight: 'normal', margin: '10px 0' }}
+                >
+                    Ryujin, as a powerful force within ITZY, has consistently amazed fans with her captivating performances.
+                    Her energy and passion shine through in every song, proving her undeniable place in the K-Pop industry.
+                    From stage to screen, Ryujin’s presence continues to leave an unforgettable mark, and we can’t help but celebrate
+                    the iconic moments she’s shared with ITZY. Here’s a look at some of the most memorable moments from her journey.
+                </motion.p>
+            </div>
+
             <div className="flex w-full flex-col">
-                <Tabs aria-label="Options" color="#FFB8EB" variant="bordered">
+                <Tabs
+                    aria-label="Options"
+                    color="#FFB8EB"
+                    variant="bordered"
+                    onChange={handleTabChange} // Set tab change handler
+                >
                     <Tab
                         key="photos"
                         title={
@@ -45,7 +71,7 @@ function GalleryFilters() {
                         }
                     />
                     <Tab
-                        key="music"
+                        key="fanart"
                         title={
                             <div className="flex items-center space-x-2">
                                 <HiOutlinePaintBrush fontSize={20} />
@@ -78,11 +104,15 @@ function GalleryFilters() {
                 </Tabs>
             </div>
 
-
-
+            <div className="mt-4">
+                {activeTab === "photos" && <Photos />}
+                {activeTab === "fanart" && <div>Content for Fan Art Tab</div>}
+                {activeTab === "videos" && <div>Content for Videos Tab</div>}
+            </div>
         </div>
-    )
+    );
 }
 
 import { SectionWrapper } from '../../hoc';
-export default SectionWrapper(GalleryFilters, 'gallery_filters')
+import Photos from './Collections/Photos';
+export default SectionWrapper(GalleryFilters, 'gallery_filters');
