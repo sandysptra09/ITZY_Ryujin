@@ -13,7 +13,7 @@ const AboutSection = () => {
                 initial="hidden"
                 animate="show"
             >
-                <p className={styles.sectionSubText}>Introduction.</p>
+                <p className={styles.sectionSubText2}>Introduction.</p>
                 <h2 className={styles.sectionHeadText}>Ryujin? Who is she?</h2>
             </motion.div>
 

@@ -73,7 +73,7 @@ function Discography() {
                 initial="hidden"
                 animate="show"
             >
-                <p className={styles.sectionSubText}>Discography.</p>
+                <p className={styles.sectionSubText2}>Discography.</p>
                 <h2 className={styles.sectionHeadText}>Ryujin's career with ITZY</h2>
             </motion.div>
 
@@ -96,7 +96,7 @@ function Discography() {
                 <motion.div
                     className={style_discography.contentSliderContainer}
                     drag="x"
-                    dragConstraints={constrainRef}
+                    dragConstraints={{ constrainRef }}
                 >
                     {discographyData.map((album, index) => (
                         <motion.div
@@ -104,6 +104,9 @@ function Discography() {
                             className={style_discography.card}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 2, y: 0 }}
+                            transition={{ duration: 0.3, delay: index * 0.3 }}
                         >
                             <img
                                 src={album.cover}
@@ -152,6 +155,7 @@ function Discography() {
                             </div>
                         </motion.div>
                     ))}
+
                 </motion.div>
             </motion.div>
         </div>
