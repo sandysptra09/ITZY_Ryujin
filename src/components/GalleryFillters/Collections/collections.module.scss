@@ -1,0 +1,14 @@
+.myMasonryGrid {
+    display: flex;
+    margin-left: -20px; /* Adjust gap */
+    width: auto;
+}
+
+.myMasonryGridColumn {
+    padding-left: 20px; /* Adjust gap */
+    background-clip: padding-box;
+}
+
+.galleryItem {
+    margin-bottom: 20px;
+}
