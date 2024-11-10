@@ -12,7 +12,7 @@ export default function Photos() {
     };
 
     return (
-        <div className={styles.galleryContainer}>
+        <div className={`${styles.galleryContainer} mt-12`}>
             <Masonry
                 breakpointCols={breakpointColumnsObj}
                 className={styles.myMasonryGrid}

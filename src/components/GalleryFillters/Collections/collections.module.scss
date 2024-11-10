@@ -11,4 +11,21 @@
 
 .galleryItem {
     margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.photo {
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.galleryItem:hover .photo {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
 }
