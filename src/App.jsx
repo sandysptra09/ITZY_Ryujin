@@ -4,7 +4,7 @@ import Index from './pages/Index';
 
 function App() {
   useEffect(() => {
-    // Inisialisasi Lenis
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => t * (2 - t),
