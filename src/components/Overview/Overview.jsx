@@ -14,7 +14,7 @@ const AboutSection = () => {
                 animate="show"
             >
                 <p className={styles.sectionSubText2}>Introduction.</p>
-                <h2 className={styles.sectionHeadText}>Ryujin? Who is she?</h2>
+                <h2 className={styles.sectionHeadText}>Shin Ryu-jin? Who is she?</h2>
             </motion.div>
 
             <motion.div

@@ -20,7 +20,7 @@ export default function Index() {
             <Gallery />
             <Timeline />
             <Discography />
-            <div className={styles.spacer}></div>
+            {/* <div className={styles.spacer}></div> */}
         </div>
     )
 }
