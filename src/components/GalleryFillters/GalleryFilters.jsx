@@ -6,6 +6,7 @@ import { styles } from '../../styles';
 // import from nextui
 import { Tabs, Tab } from '@nextui-org/react';
 import { HiOutlinePaintBrush } from "react-icons/hi2";
+
 import Photos from './Collections/Photos';
 import FanArts from './Collections/FanArts';
 
@@ -46,8 +47,8 @@ function GalleryFilters() {
                     aria-label="Options"
                     color="#FFB8EB"
                     variant="bordered"
-                    selectedKey={activeTab} // Bind active tab
-                    onSelectionChange={handleTabChange} // Set tab change handler
+                    selectedKey={activeTab}
+                    onSelectionChange={handleTabChange}
                 >
                     <Tab
                         key="photos"
@@ -106,11 +107,18 @@ function GalleryFilters() {
                 </Tabs>
             </div>
 
-            <div className="mt-4">
+            <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.5, ease: [0.42, 0, 0.58, 1] }}
+                className="mt-4"
+            >
                 {activeTab === "photos" && <Photos />}
                 {activeTab === "fanart" && <FanArts />}
                 {activeTab === "videos" && <div>Content for Videos Tab</div>}
-            </div>
+            </motion.div>
         </div>
     );
 }
