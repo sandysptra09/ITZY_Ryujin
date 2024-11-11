@@ -19,10 +19,10 @@ function Discography() {
     const handlePlayPause = (index) => {
         const audio = audioRefs.current[index];
 
-        // If different audio is currently playing, stop it
+        // ff different audio is currently playing, stop it
         if (currentAudio && currentAudio !== audio) {
             currentAudio.pause();
-            currentAudio.currentTime = 0; // Reset previously playing audio
+            currentAudio.currentTime = 0;
         }
 
         if (audio.paused) {
@@ -56,7 +56,6 @@ function Discography() {
                 updateTime(discographyData.findIndex(album => album.music === currentAudio.src));
             }, 1000);
 
-            // Cleanup interval
             return () => clearInterval(interval);
         }
     }, [currentAudio]);

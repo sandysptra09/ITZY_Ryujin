@@ -14,7 +14,7 @@ function GalleryFilters() {
     // initiate
     const [activeTab, setActiveTab] = useState("photos"); // Track active tab
 
-    // Function to handle tab change
+    // function to handle tab change
     const handleTabChange = (key) => {
         setActiveTab(key);
     };
@@ -42,7 +42,7 @@ function GalleryFilters() {
                 </motion.p>
             </div>
 
-            <div className="flex w-full flex-col">
+            <div className="flex w-full flex-col items-center">
                 <Tabs
                     aria-label="Options"
                     color="#FFB8EB"
