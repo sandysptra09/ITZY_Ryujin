@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Lenis from '@studio-freight/lenis';
 import { motion, useTransform, useScroll } from 'framer-motion';
-import styles from './Gallery.module.scss'
+import styles from './gallery.module.scss'
 import { styles as globalStyles } from '../../styles';
 import images from '../../assets/images/images';
 
