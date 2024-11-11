@@ -7,6 +7,8 @@ import discographyData from "./discographyData";
 import { FaPlay, FaPause } from "react-icons/fa"; // Mengimpor ikon
 
 function Discography() {
+
+    // initialize 
     const constrainRef = useRef(null);
     const [currentAudio, setCurrentAudio] = useState(null);
     const [audioStates, setAudioStates] = useState(
@@ -17,42 +19,34 @@ function Discography() {
     const handlePlayPause = (index) => {
         const audio = audioRefs.current[index];
 
+        // If different audio is currently playing, stop it
         if (currentAudio && currentAudio !== audio) {
             currentAudio.pause();
-            setAudioStates((prev) =>
-                prev.map((state, i) => (i === index ? { ...state, isPlaying: false } : state))
-            );
-            setCurrentAudio(null);
+            currentAudio.currentTime = 0; // Reset previously playing audio
         }
 
         if (audio.paused) {
             audio.play();
             setCurrentAudio(audio);
-            setAudioStates((prev) =>
-                prev.map((state, i) => (i === index ? { ...state, isPlaying: true } : state))
-            );
         } else {
             audio.pause();
-            setAudioStates((prev) =>
-                prev.map((state, i) => (i === index ? { ...state, isPlaying: false } : state))
-            );
         }
+
+        setAudioStates((prev) =>
+            prev.map((state, i) =>
+                i === index
+                    ? { ...state, isPlaying: !audio.paused }
+                    : { ...state, isPlaying: false }
+            )
+        );
     };
 
     const updateTime = (index) => {
         const audio = audioRefs.current[index];
         setAudioStates((prev) =>
-            prev.map((state, i) => (i === index ? { ...state, currentTime: audio.currentTime } : state))
-        );
-    };
-
-    const handleProgressChange = (event, index) => {
-        const audio = audioRefs.current[index];
-        const { value } = event.target;
-        audio.currentTime = value;
-
-        setAudioStates((prev) =>
-            prev.map((state, i) => (i === index ? { ...state, currentTime: value } : state))
+            prev.map((state, i) =>
+                i === index ? { ...state, currentTime: audio.currentTime } : state
+            )
         );
     };
 
@@ -62,6 +56,7 @@ function Discography() {
                 updateTime(discographyData.findIndex(album => album.music === currentAudio.src));
             }, 1000);
 
+            // Cleanup interval
             return () => clearInterval(interval);
         }
     }, [currentAudio]);
@@ -148,7 +143,7 @@ function Discography() {
                                             max={audioRefs.current[index]?.duration || 0}
                                             value={audioStates[index].currentTime}
                                             onChange={(event) => handleProgressChange(event, index)}
-                                            className="mx-4"
+                                            className="mx-4 rounded-full"
                                         />
                                     </div>
                                 </div>
