@@ -117,11 +117,12 @@ function GalleryFilters() {
             >
                 {activeTab === "photos" && <Photos />}
                 {activeTab === "fanart" && <FanArts />}
-                {activeTab === "videos" && <div>Content for Videos Tab</div>}
+                {activeTab === "videos" && <Videos />}
             </motion.div>
         </div>
     );
 }
 
 import { SectionWrapper } from '../../hoc';
+import Videos from './Collections/Videos';
 export default SectionWrapper(GalleryFilters, 'gallery_filters');

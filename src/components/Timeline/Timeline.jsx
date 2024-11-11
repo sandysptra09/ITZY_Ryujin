@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { fadeIn, textAnimation } from '../../utils/motion';
+import { fadeIn, textAnimation, staggerContainer } from '../../utils/motion';
 import { styles } from '../../styles';
 import milestones from './milestones';
 
@@ -30,7 +30,7 @@ function Timeline() {
 
       <motion.ul
         className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical"
-        variants={fadeIn("up", "tween", 0.4, 1)}
+        variants={staggerContainer(0.3, 0.1)}
         initial="hidden"
         animate="show"
       >
