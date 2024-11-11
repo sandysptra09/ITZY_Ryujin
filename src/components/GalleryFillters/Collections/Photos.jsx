@@ -4,6 +4,7 @@ import styles from './collections.module.scss';
 import photos from '../../../assets/photos/photos';
 
 export default function Photos() {
+    // initialize masonry
     const breakpointColumnsObj = {
         default: 4,
         1100: 3,
@@ -20,7 +21,7 @@ export default function Photos() {
             >
                 {photos.map((photo, index) => (
                     <div key={index} className={styles.galleryItem}>
-                        <img src={photo} alt={`Photo ${index + 1}`} className={styles.photo} />
+                        <img src={photo} alt={`Ryujin Photo's ${index + 1}`} className={styles.photo} />
                     </div>
                 ))}
             </Masonry>
