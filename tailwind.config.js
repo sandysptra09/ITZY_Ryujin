@@ -13,5 +13,5 @@ export default {
     extend: {},
   },
   darkMode: "class",
-  plugins: [nextui(), daisyui()],
+  plugins: [nextui(), daisyui],
 }
